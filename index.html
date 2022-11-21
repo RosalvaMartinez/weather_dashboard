@@ -15,23 +15,74 @@
 
 <body>
     <div id="container" class="flex flex-col bg-slate-500 h-screen">
-        <header class="flex flex-col">
-            <nav class="flex flex-row h-20 bg-blue-800">
-                <ul class="flex flex-row text-xl place-items-center">
-                    <li class="mx-2">HOME</li>
-                    <li class="mx-2">ABOUT</li>
-                    <li class="mx-2">CONTACT</li>
-                </ul>
+        <header class="flex flex-col h-20 bg-blue-800">
+            <h1 class="flex flex-row text-xl place-items-center">Weather Dashboard</h1>
             </nav>
         </header>
         <main class="flex flex-col grow bg-blue-500">
+            <!-- component -->
+            <!-- search bar -->
+            <!-- need to resize width -->
+            <form>
+                <label for="default-search"
+                    class="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white">Search</label>
+                <div class="relative">
+                    <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+                        <svg aria-hidden="true" class="w-5 h-5 text-gray-500 dark:text-gray-400" fill="none"
+                            stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                        </svg>
+                    </div>
+                    <input type="search" id="search"
+                        class="block w-full p-4 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                        placeholder="Search for a city" required>
+                    <button id="search-Btn" type="submit"
+                        class="text-white absolute right-2.5 bottom-2.5 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Search</button>
+                </div>
+            </form>
+            <!-- search bar end -->
+            <!-- CURRENT DAY TOP BAWX -->
+            <div class="box-border h-32 w-64 p-4 border-4 justify-start">
+                <div class="text-2xl font-extrabold" id="city-date">name/date</div>
+                <div id="temp">temp</div>
+                <div id="wind">wind</div>
+                <div id="humid">humidity</div>
+            </div>
+            <!-- CURRENT DAY TOP BAWX END -->
+            <!-- forecast bawx -->
+            <div class="min-h-screen flex items-center justify-center m-2" id="forecast">
+                <!-- <div class="flex flex-col bg-white rounded p-4 w-full max-w-xs" id="1-day">
+                    <div class="font-bold text-xl" id="1-date"></div>
+                    <div class="font-medium text-sm">Temperature</div>
+                    <div class="flex flex-row items-center justify-center mt-6">
+                        <div class="font-medium text-6xl" id="1-temperature"></div>
+                        <div class="flex flex-col items-center ml-6">
+                            <div id="1-icon"></div>
+                        </div>
+                    </div>
+                    <div class="flex flex-row justify-between mt-6">
+                        <div class="flex flex-col items-center">
+                            <div class="font-medium text-sm">Wind</div>
+                            <div class="text-sm text-gray-500" id="1-wind"></div>
+                        </div>
+                        <div class="flex flex-col items-center">
+                            <div class="font-medium text-sm">Humidity</div>
+                            <div class="text-sm text-gray-500" id="1-humidity"></div>
+                        </div>
+                    </div>
+                </div> -->
+            </div>
+    </div>
 
-        </main>
-        <footer class="flex flex-row h-20 bg-blue-300 justify-center place-items-center">
-            <h3 class="text-xl font-bold"> Made with Crumbs</h3>
-        </footer>
+    </main>
+    <footer class="flex flex-row h-20 bg-blue-300 justify-center place-items-center">
+        <h3 class="text-xl font-bold"> Made with Crumbs</h3>
+    </footer>
 
     </div>
+    <!-- Day JS CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/dayjs@1/dayjs.min.js"></script>
     <!-- Jquery CDN -->
     <script src="https://code.jquery.com/jquery-3.6.1.min.js"
         integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
