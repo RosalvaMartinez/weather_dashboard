@@ -4,7 +4,8 @@ Weather dashboard allows the user to find weather data about any city. Weather d
 
 https://rosalvamartinez.github.io/weather_dashboard/
 
+https://github.com/RosalvaMartinez/weather_dashboard
 
+![ScreenShot](https://raw.github.com/rosalvamartinez/weather_dashboard/assets/images/screenshot.png)
 
-![Screenshot](screenshot.png)
 
