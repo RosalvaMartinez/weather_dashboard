@@ -6,6 +6,6 @@ https://rosalvamartinez.github.io/weather_dashboard/
 
 https://github.com/RosalvaMartinez/weather_dashboard
 
-![ScreenShot](https://raw.github.com/rosalvamartinez/weather_dashboard/assets/images/screenshot.png)
+![ScreenShot](assets/images/screenshot.png)
 
 
