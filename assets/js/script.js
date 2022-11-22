@@ -1,5 +1,15 @@
 // global variables/arrays
 var cityHistory = []
+fetch('https://api.openweathermap.org/data/2.5/forecast?q=' + "Denver" + '&appid=6a16f44aa0339e512c7d8ee4624fb62c')
+        .then(res => {
+            console.log(res.body)
+            return res.json()
+        })
+        .then(data => {
+            console.log(data)
+            injectCurrentDay(data)
+            injectData(data)
+        })
 
 
 
@@ -11,9 +21,12 @@ function citySearch(e) {
     e.preventDefault()
     //  1. store the user input in a variable
     var userInput = $("#search").val()
-    //  2. store city into local storage
-    cityHistory.push(userInput)
-    localStorage.setItem("cityHistory", JSON.stringify(cityHistory))
+    if (!cityHistory.includes(userInput)) {
+        //  2. store city into local storage
+        cityHistory.push(userInput)
+        localStorage.setItem("cityHistory", JSON.stringify(cityHistory))
+        loadHistory()
+    }
     //  3. use fetch api to get the current & next 5 day weather for that city
     fetch('https://api.openweathermap.org/data/2.5/forecast?q=' + userInput + '&appid=6a16f44aa0339e512c7d8ee4624fb62c')
         .then(res => {
@@ -33,7 +46,8 @@ function citySearch(e) {
 function injectCurrentDay(data) {
     var i = 1
     //  1. name of place and today's date MM/DD/YYYY and  weather icon
-    $("#city-date").text(data.city.name + " " + dayjs.unix(data.list[i].dt).format("M/D/YYYY") + " " + data.list[i].weather[0].icon)
+    $("#city-date").text(data.city.name + " " + dayjs.unix(data.list[i].dt).format("M/D/YYYY"))
+    $("#icon").attr('src','http://openweathermap.org/img/wn/' + data.list[i].weather[0].icon + '@2x.png')
     console.log(data.city.name, dayjs.unix(data.list[i].dt).format("M/D/YYYY"), data.list[i].weather[0].icon)
     //  2. temperature Fahrenheit 
     $("#temp").text(Math.floor((data.list[i].main.temp - 273.15) * 9 / 5 + 32) + " " + "F")
@@ -60,7 +74,7 @@ function injectData(data) {
         var temp_data = $("<div>").addClass("flex flex-row items-center justify-center mt-6")
         var temperature = $("<div>").addClass("font-medium text-6xl")
         temperature.text(Math.floor((data.list[i].main.temp - 273.15) * 9 / 5 + 32) + " " + "F")
-        var icon = $("<div>")
+        var icon = $("<img>").attr('src', 'http://openweathermap.org/img/wn/' + data.list[i].weather[0].icon + '@2x.png')
             .addClass("flex flex-col items-center ml-6")
             .append($("<div>").text(data.list[i].weather[0].icon))
         temp_data.append(temperature).append(icon)
@@ -87,9 +101,37 @@ function injectData(data) {
 
 // use data in local.storage to create a button under the search area for city history
 //  1. use target so that when you click any one of the buttons, a function runs lnes 16-29
-$(".searchBtn").on("click", saveLocal)
+//$(".searchBtn").on("click", saveLocal)
 
-function saveLocal(e) {
-    var savedCity = []
+function loadHistory(e) {
     //for each city cin the array of cities create a div and set its .string
+    $("#buttons").children().remove()
+    var data = localStorage.getItem("cityHistory")
+    if (data) {
+        cityHistory = JSON.parse(data)
+        for (var i = 0; i < cityHistory.length; i++) {
+            var button = $("<button>").text(cityHistory[i])
+            button.addClass("bg-slate-400 rounded m-2 p-2")
+            $("#buttons").append(button)
+        }
+    }
+
+}
+
+loadHistory()
+
+$("#buttons").on('click', citySearchButtons)
+
+function citySearchButtons(e) {
+    var userInput = $(e.target).text()
+    fetch('https://api.openweathermap.org/data/2.5/forecast?q=' + userInput + '&appid=6a16f44aa0339e512c7d8ee4624fb62c')
+        .then(res => {
+            console.log(res.body)
+            return res.json()
+        })
+        .then(data => {
+            console.log(data)
+            injectCurrentDay(data)
+            injectData(data)
+        })
 }

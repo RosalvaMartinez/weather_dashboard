@@ -15,9 +15,8 @@
 
 <body>
     <div id="container" class="flex flex-col bg-slate-500 h-screen">
-        <header class="flex flex-col h-20 bg-blue-800">
-            <h1 class="flex flex-row text-xl place-items-center">Weather Dashboard</h1>
-            </nav>
+        <header class="flex flex-col h-20 place-items-center p-6 bg-blue-800">
+            <h1 class="flex flex-row text-6xl font-extrabold">Weather Dashboard</h1>
         </header>
         <main class="flex flex-col grow bg-blue-500">
             <!-- component -->
@@ -41,45 +40,23 @@
                         class="text-white absolute right-2.5 bottom-2.5 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Search</button>
                 </div>
             </form>
+            <div id="buttons"></div>
             <!-- search bar end -->
             <!-- CURRENT DAY TOP BAWX -->
-            <div class="box-border h-32 w-64 p-4 border-4 justify-start">
+            <div class="box-border flex flex-row h-32 w-full p-4 border-4 justify-start">
                 <div class="text-2xl font-extrabold" id="city-date">name/date</div>
-                <div id="temp">temp</div>
-                <div id="wind">wind</div>
-                <div id="humid">humidity</div>
+                <img id="icon">
+                <div class="flex flex-col">
+                    <div id="temp">temp</div>
+                    <div id="wind">wind</div>
+                    <div id="humid">humidity</div>
+                </div>
             </div>
             <!-- CURRENT DAY TOP BAWX END -->
             <!-- forecast bawx -->
-            <div class="min-h-screen flex items-center justify-center m-2" id="forecast">
-                <!-- <div class="flex flex-col bg-white rounded p-4 w-full max-w-xs" id="1-day">
-                    <div class="font-bold text-xl" id="1-date"></div>
-                    <div class="font-medium text-sm">Temperature</div>
-                    <div class="flex flex-row items-center justify-center mt-6">
-                        <div class="font-medium text-6xl" id="1-temperature"></div>
-                        <div class="flex flex-col items-center ml-6">
-                            <div id="1-icon"></div>
-                        </div>
-                    </div>
-                    <div class="flex flex-row justify-between mt-6">
-                        <div class="flex flex-col items-center">
-                            <div class="font-medium text-sm">Wind</div>
-                            <div class="text-sm text-gray-500" id="1-wind"></div>
-                        </div>
-                        <div class="flex flex-col items-center">
-                            <div class="font-medium text-sm">Humidity</div>
-                            <div class="text-sm text-gray-500" id="1-humidity"></div>
-                        </div>
-                    </div>
-                </div> -->
-            </div>
+            <div class="min-h-screen flex items-center justify-center m-2" id="forecast"></div>
     </div>
-
     </main>
-    <footer class="flex flex-row h-20 bg-blue-300 justify-center place-items-center">
-        <h3 class="text-xl font-bold"> Made with Crumbs</h3>
-    </footer>
-
     </div>
     <!-- Day JS CDN -->
     <script src="https://cdn.jsdelivr.net/npm/dayjs@1/dayjs.min.js"></script>
